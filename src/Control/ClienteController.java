@@ -6,11 +6,13 @@
 package Control;
 
 import Model.Cliente;
+import java.util.List;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
@@ -52,6 +54,39 @@ public class ClienteController {
         }
         return cli;
     } 
+    
+    
+    public List<Cliente> consultaClientesSemCompra(int dias){
+        
+        connection = new connectionBD();
+        List<Cliente> clientes = new ArrayList<>(); 
+        
+        try {
+            Connection con = connection.conectaBD();
+                        
+            String sql = "select codcli, cliente,telcob,cgcent from pcclient where codcli =" +dias;
+            
+            PreparedStatement stmt = con.prepareStatement(sql);
+            
+            ResultSet rs = stmt.executeQuery();
+            
+            while(rs.next()){
+                    Cliente cli = new Cliente();
+                    cli.codCli = rs.getInt(1);
+                    cli.cliente = rs.getString(2);
+                    cli.telefone = rs.getString(3);
+                    cli.cnpj = rs.getString(4);
+                    
+                    clientes.add(cli);
+            }
+            
+            stmt.close();
+            con.close();
+        } catch (SQLException e) {
+            System.out.println("error" + e);
+        }
+        return clientes;
+    }
     
     
 }

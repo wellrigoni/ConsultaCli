@@ -33,6 +33,7 @@ public class ExibeCliente extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jTConsulta = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jtCodcli = new javax.swing.JTextField();
@@ -43,6 +44,11 @@ public class ExibeCliente extends javax.swing.JFrame {
         jtCNPJ = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jtTelefone = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jbConsultaVendas = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        jtDiasSemVendas = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -80,7 +86,7 @@ public class ExibeCliente extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jtCodcli, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)
+                                .addComponent(jtCodcli, javax.swing.GroupLayout.DEFAULT_SIZE, 423, Short.MAX_VALUE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jbBusca))
                             .addComponent(jtCNPJ)
@@ -107,24 +113,63 @@ public class ExibeCliente extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(jtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(143, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        jTConsulta.addTab("Consulta Cliente", jPanel1);
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Codcli", "Cliente", "CNPJ", "Tel"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        jTConsulta.addTab("Clientes", jScrollPane1);
+
+        jbConsultaVendas.setText("Buscar");
+        jbConsultaVendas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbConsultaVendasActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setText("Dias sem compra");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addGap(72, 72, 72)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jtDiasSemVendas)
+                .addGap(39, 39, 39)
+                .addComponent(jbConsultaVendas)
+                .addGap(59, 59, 59))
+            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(jTConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(31, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addGap(23, 23, 23)
+                .addComponent(jTConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(61, 61, 61)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jbConsultaVendas)
+                    .addComponent(jLabel5)
+                    .addComponent(jtDiasSemVendas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -139,6 +184,11 @@ public class ExibeCliente extends javax.swing.JFrame {
          jtCNPJ.setText(cli.cnpj);
          jtTelefone.setText(cli.telefone);
     }//GEN-LAST:event_jbBuscaActionPerformed
+
+    private void jbConsultaVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbConsultaVendasActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jbConsultaVendasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -180,11 +230,17 @@ public class ExibeCliente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTabbedPane jTConsulta;
+    private javax.swing.JTable jTable1;
     private javax.swing.JButton jbBusca;
+    private javax.swing.JButton jbConsultaVendas;
     private javax.swing.JTextField jtCNPJ;
     private javax.swing.JTextField jtCliente;
     private javax.swing.JTextField jtCodcli;
+    private javax.swing.JTextField jtDiasSemVendas;
     private javax.swing.JTextField jtTelefone;
     // End of variables declaration//GEN-END:variables
 }
