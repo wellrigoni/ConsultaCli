@@ -8,10 +8,11 @@ package Control;
 import Model.Cliente;
 import java.util.List;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.Instant;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 /**
@@ -21,10 +22,16 @@ import java.util.ArrayList;
 public class ClienteController {
 
     connectionBD connection;   
+    LocalDate hoje = LocalDate.now();   
     
-    public ClienteController() {
+    
+    public ClienteController() {  
+     
+        
+                
     }  
     
+ 
     
     
     public Cliente consultaCli(int codcli){
@@ -56,15 +63,19 @@ public class ClienteController {
     } 
     
     
-    public List<Cliente> consultaClientesSemCompra(int dias){
+    public List<Cliente> consultaClientesSemCompra(int dias, int rca){
         
         connection = new connectionBD();
         List<Cliente> clientes = new ArrayList<>(); 
         
+        
         try {
             Connection con = connection.conectaBD();
                         
-            String sql = "select codcli, cliente,telcob,cgcent from pcclient where codcli =" +dias;
+            String sql = "select codcli, cliente,telcob,cgcent\n" +
+"from pcclient \n" +
+"where dtbloq is NULL and bloqueiodefinitivo = 'N' and CODUSUR1 = "+rca+" and dtexclusao is null and codcli not in \n" +
+"(select unique(codcli) from pcpedc where posicao <> 'C'  AND data BETWEEN  TO_DATE('"+hoje+"', 'yyyy/mm/dd') -"+dias+" AND TO_DATE('"+hoje+"', 'yyyy/mm/dd'))" ;
             
             PreparedStatement stmt = con.prepareStatement(sql);
             
@@ -76,7 +87,7 @@ public class ClienteController {
                     cli.cliente = rs.getString(2);
                     cli.telefone = rs.getString(3);
                     cli.cnpj = rs.getString(4);
-                    
+                    System.out.println(cli.toString());
                     clientes.add(cli);
             }
             

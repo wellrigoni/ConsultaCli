@@ -37,7 +37,7 @@ public class connectionBD {
         try {
 
             connection = DriverManager.getConnection(
-                    "jdbc:oracle:thin:@192.168.0.244:1521:WINTST", "wilso", "teste");
+                    "jdbc:oracle:thin:@192.168.0.244:1521:WINTST", "WILSO", "TESTE");
 
         } catch (SQLException e) {
 
@@ -48,31 +48,5 @@ public class connectionBD {
 
         return connection;
     }
-       /*public Cliente consultaCli(){
-  
-        Cliente cli = new Cliente();
-         
-        try {
-            Connection con = connection.conectaBD();
-                        
-            String sql = "select codcli, cliente,telcob,cgcent from pcclient where codcli = 100 ";
-            
-            PreparedStatement stmt = con.prepareStatement(sql);
-            
-            ResultSet rs = stmt.executeQuery();
-            
-            while(rs.next()){
-                    cli.codCli = rs.getInt(1);
-                    cli.cliente = rs.getString(2);
-                    cli.telefone = rs.getString(3);
-                    cli.cnpj = rs.getString(4);               
-            }
-            
-            stmt.close();
-            con.close();
-        } catch (SQLException e) {
-            System.out.println("error" + e);
-        }
-        return cli;
-    } */
+       
 }
